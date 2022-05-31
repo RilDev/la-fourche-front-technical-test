@@ -25,9 +25,9 @@ Run dev server: `yarn dev`
 ### Cart /cart
 
 - [x] global context
-- [ ] only 1 product of each type in cart
-- [ ] display total price
-- [ ] display list of products in cart: name, price
+- [x] only 1 product of each type in cart
+- [x] display total price
+- [x] display list of products in cart: name, price
 
 ### Discount price
 
@@ -36,3 +36,5 @@ Run dev server: `yarn dev`
 ### Extra
 
 - [x] add favicon
+- [x] remove item from cart page
+- [ ] cool design
