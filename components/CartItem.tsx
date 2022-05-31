@@ -1,11 +1,10 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { CartContext } from "lib/context";
 import Image from "next/image";
 import RemoveCartIcon from "public/remove-cart-icon.svg";
 
 export default function CartItem({ item, isCartDiscount }) {
-  const { items, addItem, removeItem, hasItem, isDiscount } =
-    useContext(CartContext);
+  const { removeItem } = useContext(CartContext);
   return (
     <div className="flex justify-between items-center px-2 py-2 bg-gray-100 rounded">
       <div className="flex">
