@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { CartContext } from "lib/context";
 import Head from "next/head";
 import Image from "next/image";
