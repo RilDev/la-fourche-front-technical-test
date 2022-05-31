@@ -6,20 +6,28 @@ import Logo from "public/logo.svg";
 import CartIcon from "public/cart-icon.svg";
 
 export default function Cart() {
-  const { items, addItem, removeItem, hasItem } = useContext(CartContext);
+  const { items, addItem, removeItem, hasItem, isDiscount } =
+    useContext(CartContext);
   const [cartItems, setCartItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [isCartDiscount, setIsCartDiscount] = useState(false);
 
   useEffect(() => {
     const newCartItems = [];
-    const newTotalPrice = 0;
-    console.log(items);
+    let newTotalPrice = 0;
+    const newIsCartDiscount = isDiscount();
     items.forEach((item) => {
       newCartItems.push(item);
-      newTotalPrice += item.salePrice;
+
+      if (newIsCartDiscount) {
+        newTotalPrice += item.discountSalePrice;
+      } else {
+        newTotalPrice += item.salePrice;
+      }
     });
     setCartItems(newCartItems);
     setTotalPrice(newTotalPrice);
+    setIsCartDiscount(newIsCartDiscount);
   }, [items]);
 
   return (
@@ -28,7 +36,7 @@ export default function Cart() {
         <title>La Fourche - Cart</title>
         <link rel="icon" href="/favicon.png" />
       </Head>
-      <nav className="flex justify-between items-center px-2 py-4 shadow-md w-full">
+      <nav className="flex justify-between items-center px-2 py-4 w-full shadow-md">
         <Link href="/">
           <Logo className="cursor-pointer" />
         </Link>
@@ -40,11 +48,14 @@ export default function Cart() {
         {cartItems.map((item) => (
           <>
             <div>{item.name}</div>
-            <div>{item.salePrice} €</div>
+            <div>
+              {isCartDiscount ? item.discountSalePrice : item.salePrice} €
+            </div>
             <div onClick={() => removeItem(item)}>remove</div>
           </>
         ))}
         <div>Total Price: {totalPrice} €</div>
+        {isDiscount() && "Discount!!"}
       </main>
     </>
   );

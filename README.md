@@ -31,7 +31,7 @@ Run dev server: `yarn dev`
 
 ### Discount price
 
-- [ ] if total price >= 200 (euros?) then -50% on prices: cart total price, items prices
+- [x] if total price >= 200 (euros?) then -50% on items with price >= 250: cart total price, items prices
 
 ### Extra
 
