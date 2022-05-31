@@ -24,7 +24,7 @@ Run dev server: `yarn dev`
 
 ### Cart /cart
 
-- [ ] global context
+- [x] global context
 - [ ] only 1 product of each type in cart
 - [ ] display total price
 - [ ] display list of products in cart: name, price

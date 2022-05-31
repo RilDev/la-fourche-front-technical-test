@@ -1,3 +1,5 @@
+import { useContext, useEffect } from "react";
+import { CartContext } from "lib/context";
 import Head from "next/head";
 import Image from "next/image";
 import algoliasearch from "algoliasearch/lite";
@@ -12,15 +14,25 @@ import AddCartIcon from "public/add-cart-icon.svg";
 import RemoveCartIcon from "public/remove-cart-icon.svg";
 
 function Hit({ hit }) {
-  const { objectID, image, name, salePrice } = hit;
+  const { addItem, removeItem, hasItem } = useContext(CartContext);
+  const { image, name, salePrice } = hit;
 
   return (
     <div>
       <Image src={image} width={50} height={50} />
       <div>{name}</div>
       <div>{salePrice}</div>
-      <AddCartIcon className="bg-yellow-200 rounded cursor-pointer" />
-      <RemoveCartIcon className="bg-red-200 rounded cursor-pointer" />
+      {hasItem(hit) ? (
+        <RemoveCartIcon
+          onClick={() => removeItem(hit)}
+          className="bg-red-200 rounded cursor-pointer"
+        />
+      ) : (
+        <AddCartIcon
+          onClick={() => addItem(hit)}
+          className="bg-yellow-200 rounded cursor-pointer"
+        />
+      )}
     </div>
   );
 }
