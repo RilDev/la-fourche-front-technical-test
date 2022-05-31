@@ -4,6 +4,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Logo from "public/logo.svg";
 import CartIcon from "public/cart-icon.svg";
+import CartItem from "components/CartItem";
 
 export default function Cart() {
   const { items, addItem, removeItem, hasItem, isDiscount } =
@@ -44,18 +45,20 @@ export default function Cart() {
           <CartIcon className="cursor-pointer" />
         </Link>
       </nav>
-      <main>
-        {cartItems.map((item) => (
-          <>
-            <div>{item.name}</div>
-            <div>
-              {isCartDiscount ? item.discountSalePrice : item.salePrice} €
+      <main className="flex flex-col h-full">
+        <div class="flex flex-col space-y-2">
+          {cartItems.map((item) => (
+            <CartItem item={item} isCartDiscount={isCartDiscount} />
+          ))}
+        </div>
+        <div className="px-2 mt-6 text-xl text-right">
+          Total Price: {totalPrice} €{" "}
+          {isCartDiscount && (
+            <div className="inline-flex px-4 py-2 text-white bg-red-400 rounded">
+              Discount Applied!
             </div>
-            <div onClick={() => removeItem(item)}>remove</div>
-          </>
-        ))}
-        <div>Total Price: {totalPrice} €</div>
-        {isDiscount() && "Discount!!"}
+          )}
+        </div>
       </main>
     </>
   );
