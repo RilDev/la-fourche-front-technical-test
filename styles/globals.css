@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.ais-Hits-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.ais-Pagination-list {
+  display: flex;
+}
+
+@media (min-width: 640px) {
+  .ais-Hits-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
