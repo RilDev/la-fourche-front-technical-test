@@ -15,12 +15,12 @@ Run dev server: `yarn dev`
 
 ### Search Page /
 
-- [ ] Search input
-- [ ] Display result
-- [ ] Product card: image, name, price, add / remove from cart button
-- [ ] Display result in 4 columns grid on desktop and in a 2 columns grid on mobile
-- [ ] Display 20 top results
-- [ ] Pagination
+- [x] Search input
+- [x] Display result
+- [x] Product card: image, name, price, add / remove from cart button
+- [x] Display result in 4 columns grid on desktop and in a 2 columns grid on mobile
+- [x] Display 20 top results
+- [x] Pagination
 
 ### Cart /cart
 
@@ -35,4 +35,4 @@ Run dev server: `yarn dev`
 
 ### Extra
 
-- [ ] tba
+- [x] add favicon

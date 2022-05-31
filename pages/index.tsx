@@ -12,13 +12,15 @@ import AddCartIcon from "public/add-cart-icon.svg";
 import RemoveCartIcon from "public/remove-cart-icon.svg";
 
 function Hit({ hit }) {
+  const { objectID, image, name, salePrice } = hit;
+
   return (
     <div>
-      <Image src={hit.image} width={50} height={50} />
-      <div>{hit.name}</div>
-      <div>{hit.salePrice}</div>
-      <AddCartIcon />
-      <RemoveCartIcon />
+      <Image src={image} width={50} height={50} />
+      <div>{name}</div>
+      <div>{salePrice}</div>
+      <AddCartIcon className="bg-yellow-200 rounded cursor-pointer" />
+      <RemoveCartIcon className="bg-red-200 rounded cursor-pointer" />
     </div>
   );
 }
@@ -33,15 +35,15 @@ export default function Home() {
     <>
       <Head>
         <title>La Fourche - Product Finder</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
       <InstantSearch indexName="bestbuy" searchClient={searchClient}>
         <nav className="flex px-2 py-4 shadow-md w-full">
           <Logo />
           <SearchBox />
         </nav>
-        <Hits hitComponent={Hit} className="bg-red-500 grid columns-2" />
-        <Pagination className="flex" />
+        <Hits hitComponent={Hit} className="py-4 px-2" />
+        <Pagination className="flex w-full justify-center py-4" />
       </InstantSearch>
     </>
   );
