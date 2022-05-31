@@ -39,4 +39,4 @@ Run dev server: `yarn dev`
 
 - [x] add favicon
 - [x] remove item from cart page
-- [ ] cool design
+- [x] cool design
