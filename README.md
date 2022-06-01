@@ -15,6 +15,8 @@ Live demo: https://la-fourche-front-technical-test.vercel.app/
 
 ## Usage
 
+Install dependencies: `yarn`
+
 Run dev server: `yarn dev`
 
 ## Features
@@ -44,7 +46,7 @@ Run dev server: `yarn dev`
 - [x] add favicon
 - [x] remove item from cart page
 - [x] cool design
-- [ ] add TypeScript
+- [x] add TypeScript
 - [ ] paypal
 - [ ] add quantity to items in cart
 - [ ] improve pagination design

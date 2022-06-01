@@ -10,7 +10,7 @@ export default function Hit({ hit }: { hit: IItem }): ReactElement {
   const { addItem, removeItem, hasItem, isDiscount } = useContext(CartContext);
   const { image, name, salePrice } = hit;
   const discountSalePrice = salePrice >= 250 ? salePrice / 2 : salePrice;
-  const isCartDiscount: boolean = isDiscount();
+  const isCartDiscount: boolean = isDiscount?.() ?? false;
 
   return (
     <div className="flex flex-col px-2 py-2 h-full bg-gray-100 rounded">
@@ -31,14 +31,14 @@ export default function Hit({ hit }: { hit: IItem }): ReactElement {
             <div>{salePrice} €</div>
           )}
         </div>
-        {hasItem(hit) ? (
+        {hasItem?.(hit) ? (
           <RemoveCartIcon
-            onClick={() => removeItem(hit)}
+            onClick={() => removeItem?.(hit)}
             className="bg-red-200 rounded cursor-pointer"
           />
         ) : (
           <AddCartIcon
-            onClick={() => addItem(hit)}
+            onClick={() => addItem?.(hit)}
             className="bg-yellow-200 rounded cursor-pointer"
           />
         )}

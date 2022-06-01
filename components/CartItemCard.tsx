@@ -38,7 +38,7 @@ export default function CartItemCard({
         </div>
       </div>
       <RemoveCartIcon
-        onClick={() => removeItem(item)}
+        onClick={() => removeItem?.(item)}
         className="bg-red-200 rounded cursor-pointer"
       />
     </div>

@@ -7,21 +7,20 @@ import CartIcon from "public/cart-icon.svg";
 import CartItemCard from "components/CartItemCard";
 
 export default function Cart() {
-  const { items, addItem, removeItem, hasItem, isDiscount } =
-    useContext(CartContext);
-  const [cartItems, setCartItems] = useState([]);
+  const { items, isDiscount } = useContext(CartContext);
+  const [cartItems, setCartItems] = useState<any>([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const [isCartDiscount, setIsCartDiscount] = useState(false);
 
   useEffect(() => {
-    const newCartItems = [];
+    const newCartItems: any[] = [];
     let newTotalPrice = 0;
-    const newIsCartDiscount = isDiscount();
-    items.forEach((item) => {
+    const newIsCartDiscount = isDiscount?.() ?? false;
+    items?.forEach((item) => {
       newCartItems.push(item);
 
       if (newIsCartDiscount) {
-        newTotalPrice += item.discountSalePrice;
+        newTotalPrice += item?.discountSalePrice ?? 0;
       } else {
         newTotalPrice += item.salePrice;
       }
