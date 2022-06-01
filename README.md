@@ -2,6 +2,10 @@
 
 [La Fourche](https://lafourche.fr/)'s technical exam.
 
+Live demo: https://la-fourche-front-technical-test.vercel.app/
+
+![Project Demo](/public/demo.gif)
+
 ## Stack
 
 - [Next.js](https://nextjs.org/docs/getting-started)
@@ -40,3 +44,8 @@ Run dev server: `yarn dev`
 - [x] add favicon
 - [x] remove item from cart page
 - [x] cool design
+- [ ] add TypeScript
+- [ ] paypal
+- [ ] add quantity to items in cart
+- [ ] improve pagination design
+- [ ] improve search bar design
