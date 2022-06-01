@@ -49,5 +49,5 @@ Run dev server: `yarn dev`
 - [x] add TypeScript
 - [x] paypal
 - [ ] add quantity to items in cart
-- [ ] improve pagination design
+- [x] improve pagination design
 - [ ] improve search bar design

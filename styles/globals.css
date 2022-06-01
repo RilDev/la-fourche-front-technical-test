@@ -16,6 +16,20 @@
   display: flex;
 }
 
+.ais-Pagination-item {
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 2px solid #fef08a;
+}
+
+.ais-Pagination-item.ais-Pagination-item--selected {
+  background-color: #fef08a;
+}
+
+.ais-Pagination-item + .ais-Pagination-item {
+  margin-left: 8px;
+}
+
 @media (min-width: 768px) {
   .ais-Hits-list {
     grid-template-columns: repeat(4, 1fr);
