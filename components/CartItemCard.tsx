@@ -15,7 +15,6 @@ export default function CartItemCard({
 }: Props): ReactElement {
   const { removeItem } = useContext(CartContext);
   const { image, name, salePrice, discountSalePrice } = item;
-  console.log(item);
 
   return (
     <div className="flex justify-between items-center px-2 py-2 bg-gray-100 rounded">

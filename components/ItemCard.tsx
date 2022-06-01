@@ -6,7 +6,6 @@ import AddCartIcon from "public/add-cart-icon.svg";
 import RemoveCartIcon from "public/remove-cart-icon.svg";
 
 export default function Hit({ hit }: { hit: IItem }): ReactElement {
-  console.log(hit);
   const { addItem, removeItem, hasItem, isDiscount } = useContext(CartContext);
   const { image, name, salePrice } = hit;
   const discountSalePrice = salePrice >= 250 ? salePrice / 2 : salePrice;
