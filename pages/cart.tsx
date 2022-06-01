@@ -58,6 +58,27 @@ export default function Cart() {
             </div>
           )}
         </div>
+        <form
+          action="https://www.sandbox.paypal.com/cgi-bin/webscr"
+          method="post"
+          target="_top"
+          className="mt-2 text-right"
+        >
+          <input type="hidden" name="cmd" value="_s-xclick" />
+          <input type="hidden" name="hosted_button_id" value="54M2P2CS8EHK8" />
+          <input
+            type="image"
+            src="https://www.sandbox.paypal.com/en_US/FR/i/btn/btn_buynowCC_LG.gif"
+            name="submit"
+            alt="PayPal - The safer, easier way to pay online!"
+          />
+          <img
+            alt=""
+            src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif"
+            width="1"
+            height="1"
+          />
+        </form>
       </main>
     </>
   );
