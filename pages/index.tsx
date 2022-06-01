@@ -10,6 +10,7 @@ import {
 import ItemCard from "components/ItemCard";
 import Logo from "public/logo.svg";
 import CartIcon from "public/cart-icon.svg";
+import SearchIcon from "public/search-icon.svg";
 
 const searchClient = algoliasearch(
   "latency",
@@ -30,7 +31,12 @@ export default function Home() {
               <Logo />
             </div>
           </Link>
-          <SearchBox />
+          <div className="relative">
+            <SearchBox />
+            <div className="absolute top-2 right-3">
+              <SearchIcon />
+            </div>
+          </div>
           <Link href="/cart">
             <div className="cursor-pointer">
               <CartIcon />
