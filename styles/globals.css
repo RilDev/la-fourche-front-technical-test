@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.ais-Hits {
+  padding: 16px 8px;
+}
+
 .ais-Hits-list {
   display: grid;
   grid-template-columns: repeat(2, 1fr);

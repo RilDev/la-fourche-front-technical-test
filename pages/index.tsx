@@ -7,7 +7,7 @@ import {
   SearchBox,
   Pagination,
 } from "react-instantsearch-dom";
-import Hit from "components/Hit";
+import ItemCard from "components/ItemCard";
 import Logo from "public/logo.svg";
 import CartIcon from "public/cart-icon.svg";
 
@@ -33,7 +33,7 @@ export default function Home() {
             <CartIcon className="cursor-pointer" />
           </Link>
         </nav>
-        <Hits hitComponent={Hit} className="px-2 py-4" />
+        <Hits hitComponent={ItemCard} />
         <Pagination className="flex justify-center py-4 w-full" />
       </InstantSearch>
     </>

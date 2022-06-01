@@ -1,14 +1,17 @@
-import { createContext, useState } from "react";
+import { createContext, useState, FC, ReactNode } from "react";
+import { IItem } from "types";
 
-export const CartContext = createContext({
-  items: new Map(),
-  addItem: () => {},
-  removeItem: () => {},
-  hasItem: () => {},
-  isDiscount: () => {},
-});
+interface ICartContext {
+  items: Map<string, IItem>;
+  addItem: (item: IItem) => void;
+  removeItem: (item: IItem) => void;
+  hasItem: (item: IItem) => void;
+  isDiscount: () => boolean;
+}
 
-export const CartContextProvider = ({ children }) => {
+export const CartContext = createContext<Partial<ICartContext>>({});
+
+export const CartContextProvider: FC<ReactNode> = ({ children }) => {
   const addItem = (item) => {
     setState({
       ...state,

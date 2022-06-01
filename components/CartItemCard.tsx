@@ -1,26 +1,38 @@
-import { useContext } from "react";
+import { useContext, ReactElement } from "react";
+import { IItem } from "types";
 import { CartContext } from "lib/context";
 import Image from "next/image";
 import RemoveCartIcon from "public/remove-cart-icon.svg";
 
-export default function CartItem({ item, isCartDiscount }) {
+interface Props {
+  item: IItem;
+  isCartDiscount: boolean;
+}
+
+export default function CartItemCard({
+  item,
+  isCartDiscount,
+}: Props): ReactElement {
   const { removeItem } = useContext(CartContext);
+  const { image, name, salePrice, discountSalePrice } = item;
+  console.log(item);
+
   return (
     <div className="flex justify-between items-center px-2 py-2 bg-gray-100 rounded">
       <div className="flex">
-        <Image src={item.image} height="50" width="50" />
+        <Image src={image} height="50" width="50" />
         <div className="ml-2">
-          <div>{item.name}</div>
+          <div>{name}</div>
           <div>
-            {isCartDiscount && item.salePrice !== item.discountSalePrice ? (
+            {isCartDiscount && salePrice !== discountSalePrice ? (
               <div className="flex items-center">
                 <div className="mr-2 text-sm line-through font-gray-800">
-                  {item.salePrice} €
+                  {salePrice} €
                 </div>
-                <div>{item.discountSalePrice} €</div>
+                <div>{discountSalePrice} €</div>
               </div>
             ) : (
-              <div>{item.salePrice} €</div>
+              <div>{salePrice} €</div>
             )}
           </div>
         </div>

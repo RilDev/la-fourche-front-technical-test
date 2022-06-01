@@ -4,7 +4,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Logo from "public/logo.svg";
 import CartIcon from "public/cart-icon.svg";
-import CartItem from "components/CartItem";
+import CartItemCard from "components/CartItemCard";
 
 export default function Cart() {
   const { items, addItem, removeItem, hasItem, isDiscount } =
@@ -46,9 +46,9 @@ export default function Cart() {
         </Link>
       </nav>
       <main className="flex flex-col h-full">
-        <div class="flex flex-col space-y-2">
+        <div className="flex flex-col space-y-2">
           {cartItems.map((item) => (
-            <CartItem item={item} isCartDiscount={isCartDiscount} />
+            <CartItemCard item={item} isCartDiscount={isCartDiscount} />
           ))}
         </div>
         <div className="px-2 mt-6 text-xl text-right">
