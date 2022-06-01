@@ -38,10 +38,14 @@ export default function Cart() {
       </Head>
       <nav className="flex justify-between items-center px-2 py-4 w-full shadow-md">
         <Link href="/">
-          <Logo className="cursor-pointer" />
+          <div className="cursor-pointer">
+            <Logo />
+          </div>
         </Link>
         <Link href="/cart">
-          <CartIcon className="cursor-pointer" />
+          <div className="cursor-pointer">
+            <CartIcon />
+          </div>
         </Link>
       </nav>
       <main className="flex flex-col h-full">

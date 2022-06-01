@@ -26,11 +26,15 @@ export default function Home() {
       <InstantSearch indexName="bestbuy" searchClient={searchClient}>
         <nav className="flex justify-between items-center px-2 py-4 w-full shadow-md">
           <Link href="/">
-            <Logo className="cursor-pointer" />
+            <div className="cursor-pointer">
+              <Logo />
+            </div>
           </Link>
           <SearchBox />
           <Link href="/cart">
-            <CartIcon className="cursor-pointer" />
+            <div className="cursor-pointer">
+              <CartIcon />
+            </div>
           </Link>
         </nav>
         <Hits hitComponent={ItemCard} />
