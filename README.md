@@ -4,7 +4,9 @@
 
 Live demo: https://la-fourche-front-technical-test.vercel.app/
 
-![Project Demo](/public/demo.gif)
+<div style="text-align: center;">
+ <img src="public/demo.gif" style="width: 500px;">
+</div>
 
 ## Stack
 
