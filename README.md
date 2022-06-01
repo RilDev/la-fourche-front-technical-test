@@ -52,4 +52,4 @@ Run dev server: `yarn dev`
 - [x] paypal
 - [ ] add quantity to items in cart
 - [x] improve pagination design
-- [ ] improve search bar design
+- [x] improve search bar design
