@@ -14,6 +14,7 @@ Live demo: https://la-fourche-front-technical-test.vercel.app/
 - [Algolia InstantSearch](https://www.algolia.com/products/instantsearch/)
 - [Algolia InstantSearch React](https://github.com/algolia/react-instantsearch)
 - [TailwindCSS](https://tailwindcss.com/)
+- [React Paypal JS](https://www.npmjs.com/package/@paypal/react-paypal-js)
 
 ## Usage
 
