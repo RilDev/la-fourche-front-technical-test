@@ -30,7 +30,7 @@ export default function Cart() {
       }
     });
     setCartItems(newCartItems);
-    setTotalPrice(newTotalPrice);
+    setTotalPrice(Number(newTotalPrice.toFixed(2)));
     setIsCartDiscount(newIsCartDiscount);
   }, [items]);
 
