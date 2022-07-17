@@ -76,6 +76,7 @@ export default function Cart() {
             }}
           >
             <PayPalButtons
+              disabled={!totalPrice}
               style={{ layout: "horizontal", tagline: false }}
               createOrder={(_data, actions) => {
                 return actions.order.create({
