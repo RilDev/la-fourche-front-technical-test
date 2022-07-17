@@ -96,7 +96,7 @@ export default function Cart() {
                       items: cartItems.map((item) => {
                         return {
                           name: item.name /* Shows within upper-right dropdown during payment approval */,
-                          description: item.shortDescription.slice(0, 126),
+                          description: item?.shortDescription?.slice(0, 126),
                           /* Item details will also be in the completed paypal.com transaction view */
                           unit_amount: {
                             currency_code: "EUR",
