@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@paypal/react-paypal-js": "^7.8.1",
     "algoliasearch": "^4.8.4",
     "next": "^12.1.6",
     "react": "17.0.1",

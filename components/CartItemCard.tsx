@@ -28,7 +28,7 @@ export default function CartItemCard({
                 <div className="mr-2 text-sm line-through font-gray-800">
                   {salePrice} €
                 </div>
-                <div>{discountSalePrice} €</div>
+                <div>{discountSalePrice?.toFixed(2)} €</div>
               </div>
             ) : (
               <div>{salePrice} €</div>

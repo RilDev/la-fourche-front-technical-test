@@ -5,12 +5,15 @@ import Link from "next/link";
 import Logo from "public/logo.svg";
 import CartIcon from "public/cart-icon.svg";
 import CartItemCard from "components/CartItemCard";
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import { useRouter } from "next/router";
 
 export default function Cart() {
   const { items, isDiscount } = useContext(CartContext);
   const [cartItems, setCartItems] = useState<any>([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const [isCartDiscount, setIsCartDiscount] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     const newCartItems: any[] = [];
@@ -20,9 +23,9 @@ export default function Cart() {
       newCartItems.push(item);
 
       if (newIsCartDiscount) {
-        newTotalPrice += item?.discountSalePrice ?? 0;
+        newTotalPrice += Number(item?.discountSalePrice?.toFixed(2)) ?? 0;
       } else {
-        newTotalPrice += item.salePrice;
+        newTotalPrice += Number(item.salePrice.toFixed(2));
       }
     });
     setCartItems(newCartItems);
@@ -62,27 +65,58 @@ export default function Cart() {
             </div>
           )}
         </div>
-        <form
-          action="https://www.sandbox.paypal.com/cgi-bin/webscr"
-          method="post"
-          target="_top"
-          className="mt-2 text-right"
-        >
-          <input type="hidden" name="cmd" value="_s-xclick" />
-          <input type="hidden" name="hosted_button_id" value="54M2P2CS8EHK8" />
-          <input
-            type="image"
-            src="https://www.sandbox.paypal.com/en_US/FR/i/btn/btn_buynowCC_LG.gif"
-            name="submit"
-            alt="PayPal - The safer, easier way to pay online!"
-          />
-          <img
-            alt=""
-            src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif"
-            width="1"
-            height="1"
-          />
-        </form>
+        <div className="px-2 pt-4 w-full text-right">
+          <PayPalScriptProvider
+            options={{
+              "client-id":
+                "AfxaXXNa-yUCRWlKQ0G8mDKqxqRfmYYsjZ-8jN0QR6eNQAzJNs2h19hUPLLdp73VSgD6OS4ZY4HWogG-",
+              currency: "EUR",
+              // debug: true,
+            }}
+          >
+            <PayPalButtons
+              style={{ layout: "horizontal", tagline: false }}
+              createOrder={(data, actions) => {
+                return actions.order.create({
+                  purchase_units: [
+                    {
+                      amount: {
+                        currency_code: "EUR",
+                        value: totalPrice.toFixed(2),
+                        breakdown: {
+                          item_total: {
+                            /* Required when including the items array */
+                            currency_code: "EUR",
+                            value: totalPrice.toFixed(2),
+                          },
+                        },
+                      },
+                      items: cartItems.map((item) => {
+                        return {
+                          name: item.name /* Shows within upper-right dropdown during payment approval */,
+                          description: item.shortDescription.slice(0, 126),
+                          /* Item details will also be in the completed paypal.com transaction view */
+                          unit_amount: {
+                            currency_code: "EUR",
+                            value: isCartDiscount
+                              ? item.discountSalePrice.toFixed(2)
+                              : item.salePrice.toFixed(2),
+                          },
+                          quantity: "1",
+                        };
+                      }),
+                    },
+                  ],
+                });
+              }}
+              onApprove={(data, actions) => {
+                return actions.order.capture().then((details) => {
+                  router.push("/order-confirmation");
+                });
+              }}
+            />
+          </PayPalScriptProvider>
+        </div>
       </main>
     </>
   );

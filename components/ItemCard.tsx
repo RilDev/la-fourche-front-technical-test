@@ -24,7 +24,7 @@ export default function Hit({ hit }: { hit: IItem }): ReactElement {
               <div className="mr-2 text-sm line-through font-gray-800">
                 {salePrice} €
               </div>
-              <div>{discountSalePrice} €</div>
+              <div>{discountSalePrice.toFixed(2)} €</div>
             </div>
           ) : (
             <div>{salePrice} €</div>
