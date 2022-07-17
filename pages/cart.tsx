@@ -5,6 +5,7 @@ import Link from "next/link";
 import Logo from "public/logo.svg";
 import CartIcon from "public/cart-icon.svg";
 import CartItemCard from "components/CartItemCard";
+import { OnApproveActions } from "@paypal/paypal-js/types/components/buttons";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { useRouter } from "next/router";
 
@@ -76,7 +77,7 @@ export default function Cart() {
           >
             <PayPalButtons
               style={{ layout: "horizontal", tagline: false }}
-              createOrder={(data, actions) => {
+              createOrder={(_data, actions) => {
                 return actions.order.create({
                   purchase_units: [
                     {
@@ -109,10 +110,12 @@ export default function Cart() {
                   ],
                 });
               }}
-              onApprove={(data, actions) => {
-                return actions.order.capture().then((details) => {
-                  router.push("/order-confirmation");
-                });
+              onApprove={(_data, actions: OnApproveActions): Promise<void> => {
+                return (
+                  actions?.order?.capture().then((_details) => {
+                    router.push("/order-confirmation");
+                  }) ?? new Promise(() => undefined)
+                );
               }}
             />
           </PayPalScriptProvider>
